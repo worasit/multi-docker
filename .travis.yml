@@ -13,3 +13,8 @@ after_success:
   - docker build -t worasit501/multi-server ./server
   - docker build -t worasit501/multi-nginx ./nginx
   - docker build -t worasit501/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push worasit501/multi-client
+  - docker push worasit501/multi-server
+  - docker push worasit501/multi-nginx
+  - docker push worasit501/multi-worker
