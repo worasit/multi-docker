@@ -36,5 +36,4 @@
       ]
     }
   ]
-  // We will use cache and DB from the AWS(ECRedis, RDB)
 }
