@@ -10,25 +10,25 @@ script:
 
 after_success:
   - docker build -t worasit501/multi-client ./client
-  - docker build -t worasit501/multi-server ./server
+  - docker build -t worasit501/multi-api ./api
   - docker build -t worasit501/multi-nginx ./nginx
   - docker build -t worasit501/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push worasit501/multi-client
-  - docker push worasit501/multi-server
+  - docker push worasit501/multi-api
   - docker push worasit501/multi-nginx
   - docker push worasit501/multi-worker
 
-deploy:
-  provider: elasticbeanstalk
-  region: us-east-2
-  app: multi-docker
-  env: MultiDocker-env
-  bucket_name: elasticbeanstalk-us-east-2-227128452725
-  bucket_path: multi-docker
-  on:
-    branch: master
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key:
-    secure: $AWS_SECRET_KEY
-  skip_cleanup: true
+#deploy:
+#  provider: elasticbeanstalk
+#  region: us-east-2
+#  app: multi-docker
+#  env: MultiDocker-env
+#  bucket_name: elasticbeanstalk-us-east-2-227128452725
+#  bucket_path: multi-docker
+#  on:
+#    branch: master
+#  access_key_id: $AWS_ACCESS_KEY
+#  secret_access_key:
+#    secure: $AWS_SECRET_KEY
+#  skip_cleanup: true
