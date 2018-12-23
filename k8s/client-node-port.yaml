@@ -4,7 +4,7 @@ metadata:
   name: client-node-port
 spec:
   selector:
-    app: client
+    component: web
   ports:
     - port: 3050
       targetPort: 3000
